@@ -32,7 +32,7 @@ const Show = () => {
     settasks(copyTasks);
   };
     let tasksrender = (
-        <h1 className="text-center text-orange-500 font-extrabold text-2xl">
+        <h1 className="text-center text-orange-500 font-extrabold text-lg md:text-2xl">
             No pending Tasks...
         </h1>
     );
@@ -41,38 +41,38 @@ const Show = () => {
             return (
                 <li
                     key={index}
-                    className="mb-5 flex justify-between items-center border rounded-xl p-5"
+                    className="mb-3 md:mb-5 flex flex-col md:flex-row justify-between items-start md:items-center border rounded-xl p-3 md:p-5"
                 >
-                    <div className="flex items-center">
+                    <div className="flex items-center mb-2 md:mb-0">
                         <div
                             onClick={() => CompleteTaskToggle(index)}
                             className={`${
                                 task.completed ? "bg-green-500" : "border"
-                            } mr-4 rounded-full w-[30px] h-[30px]  border-orange-600`}
+                            } mr-3 md:mr-4 rounded-full w-8 h-8 md:w-[30px] md:h-[30px] border-orange-600 cursor-pointer`}
                         ></div>
                         <h1
                             className={`${
                                 task.completed && "line-through"
-                            } text-2xl font-extrabold text-yellow-100`}
+                            } text-lg md:text-2xl font-extrabold text-yellow-100 break-words`}
                         >
                             {task.title}
                         </h1>
                     </div>
-                    <div className="flex gap-3 text-2xl text-yellow-100">
+                    <div className="flex gap-2 md:gap-3 text-lg md:text-2xl text-yellow-100">
                             <i
                                 onClick={() => EditHandler(index)}
                                  className="ri-file-edit-line cursor-pointer"
                                       ></i>
                         <i
                             onClick={() => DeleteHandler(index)}
-                            className="ri-delete-bin-3-line"
+                            className="ri-delete-bin-3-line cursor-pointer"
                         ></i>
                     </div>
                 </li>
             );
         });
     }
-    return <ul className="list-none w-[35%] ">{tasksrender}</ul>;
+    return <ul className="list-none w-full max-w-sm md:max-w-md lg:max-w-lg">{tasksrender}</ul>;
 };
 
 export default Show;
